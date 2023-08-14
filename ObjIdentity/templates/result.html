@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <title>Result</title>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+        .profile-head{
+            margin: 15px;
+        }
+        .form{
+            background-color: rgba(66, 54, 54, 0.682);
+            border-radius: 15px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            border-style: solid;
+            border-color: rgba(66, 54, 54);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row profile-head">
+            <h1 style="text-align: center; color: brown;">Object Prediction Application</h1>
+        </div>
+        <div class="container-sm text-center form">
+            <div class="row">
+                <h1 style="text-align: center; padding: 5px;">Find your results</h1>                
+            </div>
+            <div class="row">
+                <div class="col align-self-center">
+                    {% load static%}
+                    <br>
+                    <table class="table table-responsive table-sm table-dark table-hover table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Object</th>
+                                <th scope="col">Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r,p in res %}
+                                <tr>
+                                    <td>{{r}}</td>
+                                    <td>{{p}}%</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="col-sm-12">
+                        <a href="{% url 'home' %}"><button class="btn btn-primary">Click to Upload new image</button></a>
+                    </div>
+                </div>
+                
+            </div>
+            <br>
+            <div class="row text-center">
+                <img src="{% static 'img.jpg' %}" class="img-fluid rounded float-start" alt="Unloaded Image">
+            </div>
+        </div> 
+    </div>
+</body>
+</html>
